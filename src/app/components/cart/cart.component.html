@@ -1,0 +1,69 @@
+<ng-container *ngIf="true">
+  <div class="cart text-center">
+    <button class="text-primary mt-3" (click)="Gotoproducts()">
+      Shop More
+    </button>
+  </div>
+  <div class="cart text-center">
+    <button class="text-primary mt-3" (click)="GotoOrders()">Orders</button>
+  </div>
+  <div class="card-table">
+    <div class="card-product mt-4 text-center">
+      <table class="table-responsive w-100 h-25 border shadow">
+        <thead class="border-3">
+          <tr>
+            <th>Id</th>
+            <th>product Name</th>
+            <th>image</th>
+            <th>Description</th>
+            <th>price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of products; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.title }}</td>
+            <td>
+              <img class="img-fluid h-25 w-25" src="{{ item.image }}" alt="" />
+            </td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total }}</td>
+
+            <td><button (click)="removeProduct(item)">Delete</button></td>
+            <td>
+              <div class="btn btn-primary" (click)="PostData(item)">
+                Order Now
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Total:{{ allProducts }}</td>
+            <td>
+              <button class="bg-danger" (click)="removeAllProduct()">
+                Empty
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="products.length == 0">
+  <div class="container mt-5 shadow pb-5">
+    <div class="card">
+      <h4 class="card-title">My Cart</h4>
+    </div>
+    <div class="text-center">
+      <img class="img-fluid" src="assets/images/cart.png " alt="" />
+      <h5 class="">Your Cart is Empty!</h5>
+      <h6>Add item to Cart</h6>
+    </div>
+  </div>
+</ng-container>

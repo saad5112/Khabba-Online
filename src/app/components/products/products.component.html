@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="container border shadow mt-5">
+    <div class="cart text-center">
+      <button class="text-primary mt-3" (click)="Gotocart()">Cart</button>
+    </div>
+    <div class="row pt-5">
+      <ng-container *ngFor="let item of products">
+        <div class="card col-lg-6 col-sm-12 col-md-12 shadow">
+          <div class="text-center">
+            <img class="img-fluid h-75 w-25 mt-4 p-3" src="{{ item.image }}" />
+          </div>
+          <div class="text-center">
+            <p class="li fw-bold">{{ item.id }}</p>
+            <h5
+              class="li fw-bold"
+              style="
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100ch;
+              "
+            >
+              {{ item.title }}
+            </h5>
+            <p class="li fw-bold">{{ item.price }}</p>
+            <p class="li fw-bold">{{ item.desc }}</p>
+          </div>
+          <div class="text-center">
+            <button
+              class="btn btn-btn text-center bg-primary"
+              (click)="addtocart(item)"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
